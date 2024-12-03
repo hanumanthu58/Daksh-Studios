@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <header>
+        <div class="a1">
+            <h2>Contact Details</h2>
+        </div>
+    </header>
+    <main>
+        <form id="contact-form" onsubmit="sendmail(); return false;">
+
+            Name: <input type="text" name="name" placeholder="Enter name" id="name"><br>
+            Contact no: <input type="number" name="number" placeholder="Enter number" id="number"><br>
+            Mail id: <input type="text" name="mail" placeholder="Enter email" id="mail"><br>
+            Message: <textarea name="message" placeholder="Enter your message" rows="4" cols="50" id="message"></textarea><br>
+            <input type="submit" value="Submit">
+
+        </form>
+
+        <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+        <script type="text/javascript">
+            (function(){
+                emailjs.init("QQwVmYG9cP1rgyZzC"); 
+            })();
+
+            function sendmail() {
+                var name = document.getElementById('name').value;
+                var number = document.getElementById('number').value;
+                var email = document.getElementById('mail').value;
+                var message = document.getElementById('message').value;
+
+                var templateParams = {
+                    from_name: name,
+                    from_number: number,
+                    from_email: email,
+                    message: message
+                };
+
+                emailjs.send('service_hizp9md', 'template_qudj689', templateParams)
+                .then(function(response) {
+                    alert('SUCCESSFULLY SENT', response.status, response.text);
+                }, function(error) {
+                    alert('FAILED...', error);
+                });
+            }
+        </script>
+    </main>
+    <footer>
+        <div class="footer">
+            <div class="img">
+                <img src="C:\Users\baps\Downloads\D-removebg-preview.png" height="100px" width="100px">
+            </div>
+            <div class="services">
+                <p class="s3">Our Services<br></p> 
+                <p class="s2">Pre-Wedding, Marriage, Parties, Events, Seminars</p>
+                <p class="s1">Contact Us<br>dakshpanchl969@gmail.com</p>
+                <div class="o2">
+                    <p class="o4">
+                        <a href="https://www.instagram.com/int_daksh"><img src="insta.jpg" height="50" alt="Instagram"></a>
+                        <a href="https://www.facebook.com/Daksh565856"><img src="facebook.png" height="50" alt="Facebook"></a><br>
+                    </p>
+                    <p class="o1">&copy;Daksh Studio. All rights reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
